@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User: Все пользователи</title>
+</head>
+<body>
+
+<p th:text="${message}"/>
+
+<table>
+    <thead>
+    <tr>
+<!--        <th>Id</th> -->
+        <th>Username</th>
+        <th>Password</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.getUsername()}"/></td>
+        <td th:text="${user.getPassword()}">surname</td>
+        <td th:text="${user.getAge()}">age</td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<hr/>
+<p></p>
+<form th:action="@{/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" value="Выход"></input>
+</form>
+</body>
+</html>
